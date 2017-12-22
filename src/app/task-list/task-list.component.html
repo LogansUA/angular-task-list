@@ -1,0 +1,9 @@
+<ul class="">
+  <li *ngFor="let task of tasks">
+    <task [task]="task"></task>
+    <button class="delete" (click)="deleteTask(task); $event.stopPropagation()">x</button>
+  </li>
+
+  <label>Task name: <input #taskName></label>
+  <button (click)="addTask(taskName.value); taskName.value = ''">Add</button>
+</ul>

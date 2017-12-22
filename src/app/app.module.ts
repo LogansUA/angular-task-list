@@ -1,18 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
+import {AppComponent} from './app.component';
+import {TaskComponent} from './task/task.component';
+import {TaskListComponent} from './task-list/task-list.component';
 
-import { AppComponent } from './app.component';
-
+import {TaskService} from './services/task.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TaskComponent,
+    TaskListComponent,
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    TaskService,
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

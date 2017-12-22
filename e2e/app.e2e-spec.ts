@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angular-task-list App', () => {
+describe('angular-task-task-list App', () => {
   let page: AppPage;
 
   beforeEach(() => {
