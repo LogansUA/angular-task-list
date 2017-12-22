@@ -1,9 +1,31 @@
-<label>Task name: <input #taskName></label>
-<button (click)="addTask(taskName.value); taskName.value = ''">Add</button>
+<div class="row">
+  <div class="form-group col-md-11">
+    <input type="text" id="task-name" class="form-control" placeholder="Task name" #taskName>
+  </div>
+  <div class="col-md-1">
+    <button class="btn btn-default btn-success pull-right" (click)="addTask(taskName.value); taskName.value = ''">Add</button>
+  </div>
+</div>
 
-<ul class="task-list">
-  <li *ngFor="let task of tasks">
-    <task [task]="task"></task>
-    <button class="delete" (click)="deleteTask(task); $event.stopPropagation()">x</button>
-  </li>
-</ul>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>
+          <task [task]="task"></task>
+        </td>
+        <td>
+          <button class="btn btn-default btn-danger" (click)="deleteTask(task); $event.stopPropagation()">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ul class="task-list">
+  </ul>
+</div>
