@@ -12,14 +12,7 @@ export class TaskListComponent implements OnInit {
   public constructor(private taskService: TaskService) {
   }
 
-  public addTask(name): void {
-    name = name.trim();
-
-    const task = new Task();
-
-    task.id = this.tasks.length + 1;
-    task.name = name;
-
+  public addTask(task: Task): void {
     this.tasks.push(task);
   }
 
