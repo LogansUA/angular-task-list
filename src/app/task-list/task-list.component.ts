@@ -14,6 +14,10 @@ export class TaskListComponent implements OnInit {
 
   public addTask(task: Task): void {
     this.tasks.push(task);
+
+    setTimeout(() => {
+      this.deleteTask(task);
+    }, task.getLiveTime());
   }
 
   public deleteTask(task: Task): void {
@@ -24,6 +28,14 @@ export class TaskListComponent implements OnInit {
     this.taskService.getTasks()
       .then((tasks) => {
         this.tasks = tasks;
+
+        this.tasks.forEach((task: Task) => {
+          const timeout: number = task.liveTime * 1000;
+
+          setTimeout(() => {
+            this.deleteTask(task);
+          }, timeout);
+        });
       });
   }
 
