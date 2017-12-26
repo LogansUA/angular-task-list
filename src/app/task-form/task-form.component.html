@@ -10,6 +10,35 @@
       <p class="help-block" *ngIf="name.invalid && name.dirty">Field is invalid</p>
     </div>
 
+    <div class="form-group col-md-11" [ngClass]="{
+          'has-error': description.invalid && (description.dirty || description.touched),
+          'has-success': description.valid && (description.dirty || description.touched) }
+      ">
+      <label class="control-label" for="description">Description</label>
+      <textarea
+        id="description"
+        class="form-control"
+        placeholder="Optional. Should be more than 8 characters"
+        formControlName="description">
+      </textarea>
+
+      <p class="help-block" *ngIf="description.invalid && description.dirty">Field is invalid</p>
+    </div>
+
+    <div class="form-group col-md-11" [ngClass]="{
+          'has-error': liveTime.invalid && (liveTime.dirty || liveTime.touched),
+          'has-success': liveTime.valid && (liveTime.dirty || liveTime.touched) }
+      ">
+      <label class="control-label" for="liveTime">Live time</label>
+      <input
+        id="liveTime"
+        type="number"
+        class="form-control"
+        formControlName="liveTime">
+
+      <p class="help-block" *ngIf="liveTime.invalid && liveTime.dirty">Field is invalid</p>
+    </div>
+
     <div class="form-group col-md-1">
       <label for="submit">&nbsp;</label>
       <button id="submit" class="btn btn-default btn-success pull-right form-control" type="submit">Add</button>

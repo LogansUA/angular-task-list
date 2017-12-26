@@ -10,6 +10,8 @@ import {Task} from '../models/task';
 export class TaskFormComponent implements OnInit {
   form: FormGroup;
   name: FormControl;
+  description: FormControl;
+  liveTime: FormControl;
 
   @Output() addTask = new EventEmitter<Task>();
 
@@ -18,7 +20,9 @@ export class TaskFormComponent implements OnInit {
 
   public onSubmit() {
     if (this.form.valid) {
-      this.addTask.emit(new Task(this.form.value.name));
+      const {name, description, liveTime = 5} = this.form.value;
+
+      this.addTask.emit(new Task(name, description, liveTime));
 
       this.form.reset();
     }
@@ -31,7 +35,9 @@ export class TaskFormComponent implements OnInit {
 
   public createForm() {
     this.form = new FormGroup({
-      name: this.name
+      name: this.name,
+      description: this.description,
+      liveTime: this.liveTime,
     });
   }
 
@@ -39,6 +45,12 @@ export class TaskFormComponent implements OnInit {
     this.name = new FormControl('', [
       Validators.required,
       Validators.minLength(8),
+    ]);
+    this.description = new FormControl('', [
+      Validators.minLength(8),
+    ]);
+    this.liveTime = new FormControl(5, [
+      Validators.min(1),
     ]);
   }
 }
